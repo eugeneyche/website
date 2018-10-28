@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Vidaloka|Lato:600');
+
+body {
+    margin: 0;
+    background: #fffdfb;
+    color: rgba(0.3, 0.0, 0.0, 0.75);
+    font-family: 'Georgia', serif;
+    font-size: 20px;
+}
+
+p {
+    line-height: 1.6;
+    text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: rgba(0.3, 0.0, 0.0, 0.8);
+}
+
+.blog, .post-single {
+    width: 900px;
+    margin: 96px auto;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 600;
+}
+
+.post h1 { font-size: 32px; }
+.post h2 { font-size: 28px; }
+.post h3 { font-size: 24px; }
+.post h4 { font-size: 22px; }
+.post h5 { font-size: 20px; }
+.post h6 { font-size: 18px; }
+
+.post hr {
+    margin: 36px 0;
+    border: 0;
+    border-bottom: 1px solid rgba(0.3, 0.0, 0.0, 0.3);
+}
+
+.post .post__back-button {
+    position: sticky;
+    top: 0;
+}
+
+.post .post__back-button a {
+    position: absolute;
+    right: 100%;
+    margin: 4px 32px;
+    color: rgba(0.3, 0.0, 0.0, 0.35);
+    font-size: 42px;
+    text-decoration: None;
+}
+
+.post .post__back-button a:hover {
+    color: rgba(0.3, 0.0, 0.0, 0.8);
+}
+
+.post .post__title {
+    margin-bottom: 0;
+    font-family: 'Vidaloka', 'Georgia', serif;
+    font-weight: 400;
+    font-size: 52px;
+    color: rgba(0.3, 0.0, 0.0, 0.85);
+}
+
+.post .post__date {
+    margin-top: 8px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    color: rgba(0.3, 0.0, 0.0, 0.4);
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.post .post__body {
+    margin: 48px 0;
+}
+
+.post.post--short .post__title a {
+    color: rgba(0.3, 0.0, 0.0, 0.8);
+    font-size: 42px;
+    text-decoration: none;
+}
+
+.post.post--short .post__title a:hover {
+    border-bottom: 1px solid rgba(0.3, 0.0, 0.0, 0.5);
+}
+
+.post.post--short .post__date {
+    font-size: 16px;
+}
