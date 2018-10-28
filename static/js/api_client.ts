@@ -3,6 +3,7 @@ export interface Post {
     title: string;
     date: Date;
     body: string;
+    summary?: string;
 }
 
 interface RawPost {
@@ -10,6 +11,7 @@ interface RawPost {
     title: string;
     date: string;
     body: string;
+    summary?: string;
 }
 
 let postCache: Promise<Array<Post>> | undefined;
@@ -29,6 +31,7 @@ export async function listPosts(): Promise<Array<Post>> {
                 title: raw_post.title,
                 date: new Date(raw_post.date),
                 body: raw_post.body,
+                summary: raw_post.summary,
             }));
         });
     return postCache

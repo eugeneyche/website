@@ -13,6 +13,7 @@ use walkdir::WalkDir;
 struct RawPostInfo {
     title: String,
     date: String,
+    summary: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -21,6 +22,7 @@ pub struct Post {
     pub title: String,
     pub date: DateTime<Utc>,
     pub body: String,
+    pub summary: Option<String>,
 }
 
 #[derive(Debug)]
@@ -60,7 +62,7 @@ impl Post {
             .map_err(|err| PostError::InvalidDateTime(err))?;
         let mut body = String::new();
         html::push_html(&mut body, Parser::new(&body_content));
-        Ok(Post {slug, title: raw_info.title, date, body})
+        Ok(Post {slug, title: raw_info.title, date, summary: raw_info.summary, body})
     }
 }
 

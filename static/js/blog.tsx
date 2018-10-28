@@ -27,6 +27,9 @@ export class Blog extends React.Component<Props, State> {
                     <div key={index} className="post post--short">
                         <h1 className="post__title"><Link to={`/post/${post.slug}`}>{post.title}</Link></h1>
                         <h2 className="post__date">{dateFormat(post.date, 'MMM D, YYYY')}</h2>
+                        { post.summary !== undefined ? (
+                        <p className="post__summary">{post.summary}</p>
+                        ) : null}
                     </div>
                 ))}
             </div>
