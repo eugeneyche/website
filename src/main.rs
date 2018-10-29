@@ -50,7 +50,7 @@ fn run_app(address: &str, posts_root_path: &str, num_workers: usize) -> Result<(
     server::new(move || {
         info!("Initialing app worker");
         App::with_state(state.clone())
-            .middleware(middleware::Logger::new("%a %{User-Agent}i"))
+            .middleware(middleware::Logger::new("%a %r %{User-Agent}i"))
             .handler("/static", fs::StaticFiles::new(&crate_path("static/dist")).expect("can serve statics"))
             .resource("/api/list_posts", |r| r.method(http::Method::POST).f(list_posts))
             .resource("/{path:.*}", |r| r.method(http::Method::GET).f(index))
