@@ -74,8 +74,10 @@ pub struct Store {
 
 impl Store {
     pub fn new<P: AsRef<Path>>(path: P) -> Self {
+        let path = path.as_ref();
+        info!("Initialing post store at {:?}", path);
         let mut store = Store {
-            root_path: path.as_ref().to_path_buf(),
+            root_path: path.to_path_buf(),
             posts: Vec::new(),
         };
         store.update();
@@ -83,10 +85,17 @@ impl Store {
     }
 
     fn update(&mut self) {
+        info!("Updating post store");
         let mut posts = Vec::new();
         for entry in WalkDir::new(&self.root_path).into_iter().filter_map(|e| e.ok()) {
-            if let Ok(post) = Post::from_file(entry.path()) {
-                posts.push(post);
+            match Post::from_file(entry.path()) {
+                Ok(post) => {
+                    info!("Got post {:?}: {}", entry.path(), post.title);
+                    posts.push(post)
+                },
+                Err(err) => {
+                    warn!("Failed to read post at {:?}: {:?}", entry.path(), err);
+                },
             }
         }
         posts.sort_by_key(|post| post.date);
